@@ -1,0 +1,25 @@
+:root{
+    --color-p:rgb(0, 0, 0);
+    --color-s: rgb(250, 245, 245);
+    --color-A: rgb(101, 101, 101);
+}
+
+/* navbar */
+
+.navbar-custom{
+    margin: 5vh 20vh 0vh 20vh;
+    background-color: var(--color-A);
+    backdrop-filter: blur(10px);
+    border: 2px solid var(--color-A);
+    border-radius: 10px;
+    
+}
+
+.transition{
+    transition: 1s;
+}
+
+.masthead{
+    height: 75vh;
+    background-color: var(--color-p);
+}
