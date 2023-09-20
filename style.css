@@ -3,6 +3,9 @@
     --color-s: rgb(250, 245, 245);
     --color-A: rgb(101, 101, 101);
 }
+.color-p{
+    color: var(--color-p);
+}
 
 /* navbar */
 
@@ -14,12 +17,21 @@
     border-radius: 10px;
     
 }
-
 .transition{
     transition: 1s;
 }
-
 .masthead{
     height: 75vh;
     background-color: var(--color-p);
+}
+.sezioneFrase{
+    height: 25vh;
+}
+
+/* category  */
+.img-category{
+    border-radius: 50%;
+    border: 2px solid var(--color-p);
+    padding: 5px;
+    width: 100%;
 }
