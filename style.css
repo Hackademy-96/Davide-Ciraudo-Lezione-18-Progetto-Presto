@@ -35,3 +35,14 @@
     padding: 5px;
     width: 100%;
 }
+/* sezione numeri  */
+.boxNumbers{
+    background-color: var(--color-p);
+    height: 120px;
+    color: var(--color-s);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 10px;
+}
