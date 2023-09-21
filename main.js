@@ -20,7 +20,7 @@ let contatore= document.querySelector(".contatore");
 function createInterval(numeroCicli, contatore, tempo) {
     let counter= 0;
     let interval= setInterval(()=>{
-    if (counter<numeroCicli) {
+    if  (counter<numeroCicli) {
         counter++;
         contatore.innerHTML= counter;
     } else{
@@ -31,10 +31,19 @@ function createInterval(numeroCicli, contatore, tempo) {
     }, tempo)
 } 
 
-createInterval(1000, articlesNumber, 10);
-createInterval(500, usersNumber, 20);
-createInterval(120, productsNumber, 30);
+let isEntered= false;
 
-let contatori= document.querySelector(".contatori")
 
+let observer= new IntersectionObserver((entries)=>{
+    entries.forEach( (entry)=>{
+        if (entry.isIntersecting) {
+            createInterval(1000, articlesNumber, 10);
+            createInterval(500, usersNumber, 20);
+            createInterval(120, productsNumber, 30);
+            isEntered=true
+        }
+    })
+})
+
+observer.observe(articlesNumber)
 
