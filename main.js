@@ -99,3 +99,4 @@ heart.forEach((cuori)=>{
         cuori.classList.toggle("text-danger")
     })
 })
+
