@@ -47,6 +47,8 @@ let observer= new IntersectionObserver((entries)=>{
 
 observer.observe(articlesNumber)
 
+// Annunci Card 
+
 let annunci = [
     {nome: "Martelletti", categoria:"Accorderia", prezzo:"50$", url:"https://picsum.photos/201"},
     {nome: "Tastiera", categoria:"PressureTecnology", prezzo:"200$", url:"https://picsum.photos/202"},
@@ -77,7 +79,7 @@ annunci.forEach((annuncio, i)=>{
                       <p class="card-text">${annuncio.categoria}</p>
                       <p class="card-text fw-bold">${annuncio.prezzo}</p>
                       <div class="d-flex justify-content-between fs-4">
-                        <a href="#" class="btn btn-outline-danger">Aggiungi al Carrello</a>
+                        <button class="btn aggiungiAlCarrelloButton btn-outline-danger">Aggiungi al Carrello</button>
                         <i class="bi bi-heart"></i>
                       </div>
                       
@@ -98,5 +100,21 @@ heart.forEach((cuori)=>{
         cuori.classList.toggle("bi-heart-fill")
         cuori.classList.toggle("text-danger")
     })
-})
+});
+
+const carrelloBadge = document.getElementById('carrelloBadge');
+
+var addButtonElements = document.querySelectorAll('.aggiungiAlCarrelloButton');
+
+let numeroNelCarrello= 0
+addButtonElements.forEach((element)=> {
+    
+  element.addEventListener('click', ()=> {
+    numeroNelCarrello++;
+
+    carrelloBadge.innerHTML = numeroNelCarrello;
+    
+  });
+});
+
 

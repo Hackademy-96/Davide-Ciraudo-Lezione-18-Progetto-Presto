@@ -58,16 +58,28 @@
                     <a class="nav-link" href="#"></a>
                     <i class="bi bi-person-fill"></i>
                 </li>
+                
                 <li class="nav-item me-2">
-                    <a class="nav-link" href="#"></a>
-                    <i class="bi bi-cart-fill"></i>
-                </li>
+                    <a class="nav-link" href="#">
+                      <i id="carrelloIcon" class="bi bi-cart-fill position-relative cart-icon">
+                        <span id="carrelloBadge" class="position-absolute top-0 start-100 w-100 translate-middle badge d-flex justify-content-center rounded-pill bg-danger">
+                          0
+                          <span class="visually-hidden">unread messages</span>
+                        </span>
+                      </i>
+                    </a>
+                  </li>
+                  
+                  
+                  
+                
+                
                 
             </ul>
-           
-          </div>
+            
         </div>
-      </nav>
+    </div>
+</nav>
     <!-- fine navbar  -->
     
     <!-- inizio header  -->
@@ -127,7 +139,7 @@
                       <p class="card-text">Categoria</p>
                       <p class="card-text fw-bold">Prezzo: 500$</p>
                       <div class="d-flex justify-content-between fs-4">
-                        <a href="#" class="btn btn-outline-danger">Aggiungi al Carrello</a>
+                        <button href="#" class="btn aggiungiAlCarrelloButton btn-outline-danger">Aggiungi al Carrello</button>
                         <i class="bi bi-heart"></i>
                       </div>
                       

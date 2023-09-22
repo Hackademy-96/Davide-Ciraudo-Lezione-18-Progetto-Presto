@@ -51,3 +51,18 @@
     transform: scale(1.2);
     
 }
+
+/* Stili per l'icona del carrello */
+.cart-icon {
+    font-size: 30px; 
+    color: #ffffff; 
+  }
+  
+  /* Stili per il badge */
+.cart-icon .badge {
+    font-size: 12px; 
+    background-color: #ff0000; 
+    top: -15px; 
+    right: -15px; 
+    
+}
