@@ -11,71 +11,71 @@ window.addEventListener("scroll", ()=>{
 
 fetch("./annunci.json").then((response)=> response.json()).then
 ((data) => {
-
+    
     let cardsWrapper = document.querySelector("#cardsWrapper")
     // creazione annunci 
-
+    
     function createCards(array) {
         cardsWrapper.innerHTML="";
         array.forEach((card, i) => {
-        let div = document.createElement("div")
-        div.classList.add("col-12", "col-md-6", "col-lg-4", "my-5")
-        div.innerHTML=`
-                      <div class="card mt-5">
-                        <div class="overflow-hidden">
-                            <img src="https://picsum.photos/20${i}" class="card-img-top transition" alt="...">    
-                        </div>
-                        <div class="card-body">
-                          <h5 class="card-title">${card.nome}</h5>
-                          <p class="card-text">${card.Categoria}</p>
-                          <p class="card-text fw-bold">${card.Prezzo}</p>
-                          <div class="d-flex justify-content-between fs-4">
-                            <button class="btn aggiungiAlCarrelloButton btn-outline-danger">Aggiungi al Carrello</button>
-                            <i class="bi bi-heart"></i>
-                          </div>
-                          
-                          <p class="card-text mt-3 text-end"><small class="text-body-secondary ">Last updated 3 mins ago</small></p>
-                        </div>
-                      </div>
-        `
-        cardsWrapper.appendChild(div);
-    });
+            let div = document.createElement("div")
+            div.classList.add("col-12", "col-md-6", "col-lg-4", "my-5")
+            div.innerHTML=`
+            <div class="card mt-5">
+            <div class="overflow-hidden">
+            <img src="https://picsum.photos/20${i}" class="card-img-top transition" alt="...">    
+            </div>
+            <div class="card-body">
+            <h5 class="card-title">${card.nome}</h5>
+            <p class="card-text">${card.Categoria}</p>
+            <p class="card-text fw-bold">${card.Prezzo}</p>
+            <div class="d-flex justify-content-between fs-4">
+            <button class="btn aggiungiAlCarrelloButton btn-outline-danger">Aggiungi al Carrello</button>
+            <i class="bi bi-heart"></i>
+            </div>
+            
+            <p class="card-text mt-3 text-end"><small class="text-body-secondary ">Last updated 3 mins ago</small></p>
+            </div>
+            </div>
+            `
+            cardsWrapper.appendChild(div);
+        });
     }
-   createCards(data);
-
-//    filtro per categoria 
-let categoryButton = document.querySelector("#categoryButtons")
-
+    createCards(data);
+    
+    //    filtro per categoria 
+    let categoryButton = document.querySelector("#categoryButtons")
+    
     function setCategories() {
-    let categories = data.map((el)=> el.Categoria);
-    
-    let uniqueCategories = [];
-    
-    categories.forEach((Categoria)=> {
-        if (!uniqueCategories.includes(Categoria)) {
-            uniqueCategories.push(Categoria)
-        }
-    })
-    uniqueCategories.forEach((uniqueCategories)=>{
-        let div = document.createElement("div")
-        div.classList.add("form-ceck")
-        div.innerHTML=`
-        <input class="form-check-input" type="radio" name="flexRadioDefault" id="${uniqueCategories}">
+        let categories = data.map((el)=> el.Categoria);
+        
+        let uniqueCategories = [];
+        
+        categories.forEach((Categoria)=> {
+            if (!uniqueCategories.includes(Categoria)) {
+                uniqueCategories.push(Categoria)
+            }
+        })
+        uniqueCategories.forEach((uniqueCategories)=>{
+            let div = document.createElement("div")
+            div.classList.add("form-ceck")
+            div.innerHTML=`
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="${uniqueCategories}">
             <label class="form-check-label" for="${uniqueCategories}">
-              ${uniqueCategories}
+            ${uniqueCategories}
             </label>
-        `
-        categoryButton.appendChild(div)
-    })
-}
-setCategories();
-
-let inputChecks = document.querySelectorAll(".form-check-input")
-
+            `
+            categoryButton.appendChild(div)
+        })
+    }
+    setCategories();
+    
+    let inputChecks = document.querySelectorAll(".form-check-input")
+    
     function filterByCategory() {
         let arrayButton= Array.from(inputChecks)
         let checked = arrayButton.find((el) => el.checked)
-
+        
         if (checked.id == "All") {
             createCards(data);
         }else{
@@ -89,14 +89,14 @@ let inputChecks = document.querySelectorAll(".form-check-input")
         radioButton.addEventListener("click", ()=>{
             filterByCategory();
         })
-
+        
     })
-
+    
     // filtro per prezzo 
-
+    
     let inputPrice = document.querySelector("#inputPrice")
     let price = document.querySelector("#price")
-
+    
     function minMaxPrices() {
         let prices= data.map((el)=> el.Prezzo );
         let max= Math.max(...prices)
@@ -107,7 +107,7 @@ let inputChecks = document.querySelectorAll(".form-check-input")
         price.innerHTML=max;
     }
     minMaxPrices()
-
+    
     function filterbyPrice() {
         let filtered= data.filter((el)=> el.Prezzo <= inputPrice.value).sort((a,b)=> b.Prezzo - a.Prezzo )
         price.innerHTML= inputPrice.value
@@ -116,19 +116,49 @@ let inputChecks = document.querySelectorAll(".form-check-input")
     inputPrice.addEventListener("input", ()=>{
         filterbyPrice();
     })
-
+    
     // filtro per parola 
-
+    
     let wordInput= document.querySelector("#wordInput");
-
+    
     function filterByWord() {
         let value = wordInput.value;
         let filtered = data.filter((el)=> el.nome.toLowerCase().includes(value.toLowerCase()));
         createCards(filtered)
     }
-
+    
     wordInput.addEventListener("input", ()=>{
         filterByWord();
     })
+
+
+    // dinamicità cuori 
+    let heart = document.querySelectorAll(".bi-heart");
+
+    heart.forEach((cuori)=>{
+    cuori.addEventListener("click", ()=>{
+        cuori.classList.toggle("bi-heart")
+        cuori.classList.toggle("bi-heart-fill")
+        cuori.classList.toggle("text-danger")
+    })
+});
+
+
+    // dinamicità pulsante carrello 
+    const carrelloBadge = document.getElementById('carrelloBadge');
+
+    var addButtonElements = document.querySelectorAll('.aggiungiAlCarrelloButton');
+
+    let numeroNelCarrello= 0
+    addButtonElements.forEach((element)=> {
+        
+    element.addEventListener('click', ()=> {
+        numeroNelCarrello++;
+
+        carrelloBadge.innerHTML = numeroNelCarrello;
+        
+    });
+    });
+
 })
 

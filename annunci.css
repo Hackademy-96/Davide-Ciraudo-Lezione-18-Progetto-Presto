@@ -2,11 +2,14 @@
     --color-p:rgb(0, 0, 0);
     --color-s: rgb(250, 245, 245);
     --color-A: rgb(101, 101, 101);
+    --color-F: darkred;
 }
 .color-p{
     color: var(--color-p);
 }
-
+.color-F{
+    color: var(--color-F);
+}
 /* navbar */
 
 .navbar-custom{
@@ -30,19 +33,26 @@
 /* sezione ultimi annunci  */
 .annunci{
     margin-top: 200px;
-
+    
 }
 /* Stili per l'icona del carrello */
 .cart-icon {
     font-size: 30px; 
     color: #ffffff; 
-  }
-  
-  /* Stili per il badge */
+}
+
+/* Stili per il badge */
 .cart-icon .badge {
     font-size: 12px; 
     background-color: #ff0000; 
     top: -15px; 
     right: -15px; 
     
+}
+/* filtri  */
+.filter-menu{
+    position: sticky;
+    top: 15vh;
+    background-color: rgb(234, 231, 231);
+    border-radius: 20px;
 }
