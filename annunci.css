@@ -1,0 +1,48 @@
+:root{
+    --color-p:rgb(0, 0, 0);
+    --color-s: rgb(250, 245, 245);
+    --color-A: rgb(101, 101, 101);
+}
+.color-p{
+    color: var(--color-p);
+}
+
+/* navbar */
+
+.navbar-custom{
+    margin: 5vh 20vh 0vh 20vh;
+    background-color: var(--color-A);
+    backdrop-filter: blur(10px);
+    border: 2px solid var(--color-A);
+    border-radius: 10px;
+    
+    
+}
+.transition{
+    transition: 1s;
+}
+
+/* Card  */
+.card:hover>div>img{
+    transform: scale(1.2);
+    
+}
+/* sezione ultimi annunci  */
+.annunci{
+    margin-top: 200px;
+
+}
+/* Stili per l'icona del carrello */
+.cart-icon {
+    font-size: 30px; 
+    color: #ffffff; 
+  }
+  
+  /* Stili per il badge */
+.cart-icon .badge {
+    font-size: 12px; 
+    background-color: #ff0000; 
+    top: -15px; 
+    right: -15px; 
+    
+}
