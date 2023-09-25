@@ -116,5 +116,19 @@ let inputChecks = document.querySelectorAll(".form-check-input")
     inputPrice.addEventListener("input", ()=>{
         filterbyPrice();
     })
+
+    // filtro per parola 
+
+    let wordInput= document.querySelector("#wordInput");
+
+    function filterByWord() {
+        let value = wordInput.value;
+        let filtered = data.filter((el)=> el.nome.toLowerCase().includes(value.toLowerCase()));
+        createCards(filtered)
+    }
+
+    wordInput.addEventListener("input", ()=>{
+        filterByWord();
+    })
 })
 
