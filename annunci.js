@@ -92,6 +92,29 @@ let inputChecks = document.querySelectorAll(".form-check-input")
 
     })
 
+    // filtro per prezzo 
 
+    let inputPrice = document.querySelector("#inputPrice")
+    let price = document.querySelector("#price")
+
+    function minMaxPrices() {
+        let prices= data.map((el)=> el.Prezzo );
+        let max= Math.max(...prices)
+        let min= Math.min(...prices)
+        inputPrice.max= max;
+        inputPrice.value= max;
+        inputPrice.min= min;
+        price.innerHTML=max;
+    }
+    minMaxPrices()
+
+    function filterbyPrice() {
+        let filtered= data.filter((el)=> el.Prezzo <= inputPrice.value).sort((a,b)=> b.Prezzo - a.Prezzo )
+        price.innerHTML= inputPrice.value
+        createCards(filtered)
+    }
+    inputPrice.addEventListener("input", ()=>{
+        filterbyPrice();
+    })
 })
 
